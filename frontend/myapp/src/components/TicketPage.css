@@ -1,0 +1,137 @@
+/* TicketPage.css */
+/* clean, modern UI, responsive table + card layout */
+
+:root {
+  --bg: #f3f4f7;
+  --card: #fff;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --accent: #2563eb;
+  --accent-hover: #1e40af;
+  --radius: 12px;
+  --shadow: 0 5px 18px rgba(0,0,0,0.08);
+  font-family: Inter, system-ui;
+}
+
+/* Main container */
+.ticket-container {
+  min-height: 100vh;
+  padding: 30px 16px;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+}
+
+.ticket-wrap {
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Header */
+.ticket-header h2 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.ticket-header p {
+  margin: 6px 0 20px;
+  color: var(--text-muted);
+}
+
+/* Card (train info) */
+.train-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 25px;
+}
+
+.train-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.train-number {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.route-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.route-item {
+  min-width: 140px;
+}
+.route-item span {
+  display: block;
+  font-size: .85rem;
+  color: var(--text-muted);
+}
+.route-item strong {
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+/* Ticket table */
+.ticket-table-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.ticket-title {
+  margin-bottom: 15px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ticket-table th {
+  text-align: left;
+  background: #eef2ff;
+  padding: 12px;
+  font-weight: 600;
+}
+
+.ticket-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Buttons */
+.btn-book {
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+.btn-book:hover {
+  background: var(--accent-hover);
+}
+
+/* Responsive */
+@media(max-width: 600px) {
+  .ticket-table th, .ticket-table td {
+    padding: 8px;
+    font-size: 0.88rem;
+  }
+  .route-item {
+    min-width: 120px;
+  }
+}
