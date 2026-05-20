@@ -490,7 +490,7 @@ const MyTickets = () => {
           <div className="mt-header-inner">
             <div className="mt-eyebrow">Rail Booking System</div>
             <div className="mt-header-title-row">
-              <div className="mt-icon-box">🎫</div>
+              {/* <div className="mt-icon-box">🎫</div> */}
               <div>
                 <div className="mt-title">My Tickets</div>
                 <div className="mt-title-sub">All your booked journeys</div>
@@ -505,7 +505,7 @@ const MyTickets = () => {
 
           {tickets.length === 0 ? (
             <div className="mt-empty">
-              <div className="mt-empty-icon">🎫</div>
+              {/* <div className="mt-empty-icon">🎫</div> */}
               <p>No tickets found. Book your first journey!</p>
             </div>
           ) : (
@@ -520,7 +520,7 @@ const MyTickets = () => {
                     {/* Header: train name + price */}
                     <div className="mt-card-header">
                       <div className="mt-card-header-left">
-                        <div className="mt-card-train-icon">🚆</div>
+                        {/* <div className="mt-card-train-icon">🚆</div> */}
                         <div>
                           <div className="mt-card-train-label">Train Name</div>
                           <div className="mt-card-train-name">
