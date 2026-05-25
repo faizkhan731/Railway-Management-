@@ -142,7 +142,7 @@ const Register = () => {
     console.log("Form Data Submitted:", formData);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://railway-management-0pvq.onrender.com/api/auth/register",
         formData,
         { withCredentials: true },
       );

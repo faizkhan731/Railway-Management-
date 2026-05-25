@@ -18,7 +18,7 @@ const Pnr = () => {
       setError("");
       setTicket(null);
       const res = await axios.get(
-        "http://localhost:5000/api/tickets/check-pnr",
+        "https://railway-management-0pvq.onrender.com/api/tickets/check-pnr",
         {
           withCredentials: true,
           params: { pnr: pnr.trim() },
