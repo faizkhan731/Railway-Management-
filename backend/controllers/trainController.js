@@ -1,6 +1,6 @@
 const Train = require("../models/trainModel");
 // const TicketCategoryRate = require("../models/ticketCategory");
-const TicketCategoryRate = require("../models/ticketCategory");
+const TicketCategoryRate = require("../models/ticketcategory");
 
 
 // GET TRAINS
