@@ -1,5 +1,5 @@
 const TicketCategoryRate = require(
-  "../models/ticketCategory"
+  "../models/ticketcategory"
 );
 
 // CREATE CATEGORY RATE
