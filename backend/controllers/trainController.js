@@ -1,5 +1,7 @@
 const Train = require("../models/trainModel");
-const TicketCategoryRate = require("../models/ticketcategory");
+// const TicketCategoryRate = require("../models/ticketCategory");
+const TicketCategoryRate = require("../models/ticketCategory");
+
 
 // GET TRAINS
 const getTrains = async (req, res) => {
