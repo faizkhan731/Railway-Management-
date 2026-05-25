@@ -644,19 +644,7 @@ connectDB();
 // CORS
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "https://railway-management-three.vercel.app"
-    ],
-
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "DELETE"
-    ],
-
+    origin: true,
     credentials: true,
   })
 );
