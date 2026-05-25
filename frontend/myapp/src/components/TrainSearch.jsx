@@ -161,7 +161,7 @@ const TrainSearch = () => {
     }
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/stations?q=${query}`,
+        `https://railway-management-0pvq.onrender.com/api/stations?q=${query}`,
       );
       type === "from" ? setFromSugg(res.data) : setToSugg(res.data);
     } catch (err) {

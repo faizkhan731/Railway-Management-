@@ -148,7 +148,7 @@ const TicketPage = () => {
     const fetchTicketDetails = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/trains/tickets/${train_number}?from=${from}&to=${to}`,
+          `https://railway-management-0pvq.onrender.com/api/trains/tickets/${train_number}?from=${from}&to=${to}`,
         );
         if (res.data.success) {
           setTrain(res.data.train);

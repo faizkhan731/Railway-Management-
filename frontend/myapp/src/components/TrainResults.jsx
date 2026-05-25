@@ -124,7 +124,7 @@ const TrainResults = () => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `http://localhost:5000/api/trains?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${date}`,
+          `https://railway-management-0pvq.onrender.com/api/trains?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${date}`,
         );
         setTrains(res.data.success ? res.data.trains : []);
       } catch (err) {

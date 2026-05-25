@@ -141,19 +141,22 @@ export default function ContactPage() {
 
     try {
       // ── API call — same pattern jaise tera baaki frontend karta hai ──
-      const res = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include", // tera cors credentials:true match karta hai
-        body: JSON.stringify({
-          name: form.name,
-          phone: form.phone,
-          email: form.email,
-          pnr: form.pnr,
-          query_type: form.type, // backend "query_type" expect karta hai
-          message: form.message,
-        }),
-      });
+      const res = await fetch(
+        "https://railway-management-0pvq.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include", // tera cors credentials:true match karta hai
+          body: JSON.stringify({
+            name: form.name,
+            phone: form.phone,
+            email: form.email,
+            pnr: form.pnr,
+            query_type: form.type, // backend "query_type" expect karta hai
+            message: form.message,
+          }),
+        },
+      );
 
       const data = await res.json();
 
