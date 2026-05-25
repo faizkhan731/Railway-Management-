@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/me", {
+      .get("https://railway-management-0pvq.onrender.com/api/auth/me", {
         withCredentials: true,
       })
       .then((res) => {
