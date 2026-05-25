@@ -649,6 +649,8 @@ app.use(
   })
 );
 
+app.options("*", cors());
+
 // JSON
 app.use(express.json());
 
