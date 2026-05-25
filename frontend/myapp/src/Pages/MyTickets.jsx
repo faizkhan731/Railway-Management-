@@ -476,7 +476,9 @@ const MyTickets = () => {
       return;
     }
     axios
-      .get("http://localhost:5000/api/my-tickets", { withCredentials: true })
+      .get("http://localhost:5000/api/tickets/my-tickets", {
+        withCredentials: true,
+      })
       .then((res) => setTickets(res.data.tickets))
       .catch(() => alert("Failed to load tickets"));
   }, [user, navigate]);

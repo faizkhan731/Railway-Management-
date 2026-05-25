@@ -142,7 +142,7 @@ const Register = () => {
     console.log("Form Data Submitted:", formData);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/register",
+        "http://localhost:5000/api/auth/register",
         formData,
         { withCredentials: true },
       );

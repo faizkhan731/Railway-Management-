@@ -725,99 +725,106 @@ const TrainResults = () => {
                 Available Trains — {from} to {to}
               </div>
 
-              {trains.map((train, index) => (
-                <div className="tr-card" key={index}>
-                  {/* CARD TOP — Train name + running days */}
-                  <div className="tr-card-top">
-                    <div className="tr-train-id">
-                      {/* <div className="tr-train-icon">🚆</div> */}
-                      <div>
-                        <div className="tr-train-number">
-                          #{train.train_number}
+              {trains.map(
+                (train, index) => (
+                  console.log("TRAIN OBJECT:", train),
+                  (
+                    <div className="tr-card" key={index}>
+                      {/* CARD TOP — Train name + running days */}
+                      <div className="tr-card-top">
+                        <div className="tr-train-id">
+                          {/* <div className="tr-train-icon">🚆</div> */}
+                          <div>
+                            <div className="tr-train-number">
+                              #{train.train_number}
+                            </div>
+                            <div className="tr-train-name">
+                              {train.train_name}
+                            </div>
+                          </div>
                         </div>
-                        <div className="tr-train-name">{train.train_name}</div>
-                      </div>
-                    </div>
 
-                    <div className="tr-days-row">
-                      <span className="tr-days-label">Runs:</span>
-                      <span
+                        <div className="tr-days-row">
+                          <span className="tr-days-label">Runs:</span>
+                          <span
+                            style={{
+                              fontSize: 12,
+                              color: "#6b6358",
+                              fontWeight: 400,
+                            }}
+                          >
+                            {train.running_days}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* CARD BODY — Journey timeline + Action */}
+                      {/* <div style={{ display: "flex", alignItems: "stretch" }}> */}
+                      <div
                         style={{
-                          fontSize: 12,
-                          color: "#6b6358",
-                          fontWeight: 400,
+                          display: "flex",
+                          alignItems: "stretch",
+                          flexWrap: "wrap",
                         }}
                       >
-                        {train.running_days}
-                      </span>
-                    </div>
-                  </div>
+                        <div className="tr-card-body" style={{ flex: 1 }}>
+                          {/* FROM STATION */}
+                          <div className="tr-station">
+                            <div className="tr-station-tag">Departure</div>
+                            <div className="tr-station-time">
+                              {train.departure_time}
+                            </div>
+                            <div className="tr-station-name">{train.from}</div>
+                          </div>
 
-                  {/* CARD BODY — Journey timeline + Action */}
-                  {/* <div style={{ display: "flex", alignItems: "stretch" }}> */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "stretch",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <div className="tr-card-body" style={{ flex: 1 }}>
-                      {/* FROM STATION */}
-                      <div className="tr-station">
-                        <div className="tr-station-tag">Departure</div>
-                        <div className="tr-station-time">
-                          {train.departure_time}
+                          {/* TIMELINE */}
+                          <div className="tr-timeline">
+                            <div className="tr-tl-dot" />
+                            <div className="tr-tl-line" />
+                            <div className="tr-tl-label">Direct</div>
+                            <div
+                              className="tr-tl-line"
+                              style={{ transform: "scaleX(-1)" }}
+                            />
+                            <div className="tr-tl-dot" />
+                          </div>
+
+                          {/* TO STATION */}
+                          <div className="tr-station">
+                            <div className="tr-station-tag">Arrival</div>
+                            <div className="tr-station-time">
+                              {train.arrival_time}
+                            </div>
+                            <div className="tr-station-name">{train.to}</div>
+                          </div>
+
+                          {/* spacer for grid */}
+                          <div />
                         </div>
-                        <div className="tr-station-name">{train.from}</div>
-                      </div>
 
-                      {/* TIMELINE */}
-                      <div className="tr-timeline">
-                        <div className="tr-tl-dot" />
-                        <div className="tr-tl-line" />
-                        <div className="tr-tl-label">Direct</div>
-                        <div
-                          className="tr-tl-line"
-                          style={{ transform: "scaleX(-1)" }}
-                        />
-                        <div className="tr-tl-dot" />
-                      </div>
-
-                      {/* TO STATION */}
-                      <div className="tr-station">
-                        <div className="tr-station-tag">Arrival</div>
-                        <div className="tr-station-time">
-                          {train.arrival_time}
+                        {/* ACTION */}
+                        <div className="tr-card-action">
+                          <div className="tr-avail-tag">
+                            <div className="tr-avail-dot" />
+                            Available
+                          </div>
+                          <button
+                            className="tr-book-btn"
+                            onClick={() =>
+                              navigate(`/ticket/${train.train_number}`, {
+                                state: { from, to },
+                              })
+                            }
+                          >
+                            <div className="tr-book-btn-dot">→</div>
+                            View Ticket
+                          </button>
                         </div>
-                        <div className="tr-station-name">{train.to}</div>
                       </div>
-
-                      {/* spacer for grid */}
-                      <div />
                     </div>
-
-                    {/* ACTION */}
-                    <div className="tr-card-action">
-                      <div className="tr-avail-tag">
-                        <div className="tr-avail-dot" />
-                        Available
-                      </div>
-                      <button
-                        className="tr-book-btn"
-                        onClick={() =>
-                          navigate(`/ticket/${train.train_number}`, {
-                            state: { from, to },
-                          })
-                        }
-                      >
-                        <div className="tr-book-btn-dot">→</div>
-                        View Ticket
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  )
+                ),
+              )}
             </>
           )}
         </div>

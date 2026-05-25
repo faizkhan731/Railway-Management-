@@ -1785,7 +1785,11 @@ const BookTicketPage = () => {
   const { train, ticket } = location.state || {};
 
   const [formData, setFormData] = React.useState({
-    name: "", phone: "", age: "", gender: "", aadhar: "",
+    name: "",
+    phone: "",
+    age: "",
+    gender: "",
+    aadhar: "",
   });
   const [errors, setErrors] = React.useState({});
   const [loading, setLoading] = React.useState(false);
@@ -1793,12 +1797,47 @@ const BookTicketPage = () => {
   /* ── Category color (same as TicketPage) ── */
   const getCatStyle = (cat = "") => {
     const c = cat.toLowerCase();
-    if (c.includes("1a") || c.includes("first ac")) return { color: "#f59e0b", bg: "rgba(245,158,11,0.1)", border: "rgba(245,158,11,0.25)", icon: "👑" };
-    if (c.includes("2a") || c.includes("second ac")) return { color: "#6366f1", bg: "rgba(99,102,241,0.1)", border: "rgba(99,102,241,0.25)", icon: "⭐" };
-    if (c.includes("3a") || c.includes("third ac")) return { color: "#0ea5e9", bg: "rgba(14,165,233,0.1)", border: "rgba(14,165,233,0.25)", icon: "🔵" };
-    if (c.includes("sl") || c.includes("sleeper")) return { color: "#10b981", bg: "rgba(16,185,129,0.1)", border: "rgba(16,185,129,0.25)", icon: "🌙" };
-    if (c.includes("cc") || c.includes("chair")) return { color: "#f97316", bg: "rgba(249,115,22,0.1)", border: "rgba(249,115,22,0.25)", icon: "💺" };
-    return { color: "#9a9186", bg: "rgba(154,145,134,0.1)", border: "rgba(154,145,134,0.25)", icon: "🎫" };
+    if (c.includes("1a") || c.includes("first ac"))
+      return {
+        color: "#f59e0b",
+        bg: "rgba(245,158,11,0.1)",
+        border: "rgba(245,158,11,0.25)",
+        icon: "👑",
+      };
+    if (c.includes("2a") || c.includes("second ac"))
+      return {
+        color: "#6366f1",
+        bg: "rgba(99,102,241,0.1)",
+        border: "rgba(99,102,241,0.25)",
+        icon: "⭐",
+      };
+    if (c.includes("3a") || c.includes("third ac"))
+      return {
+        color: "#0ea5e9",
+        bg: "rgba(14,165,233,0.1)",
+        border: "rgba(14,165,233,0.25)",
+        icon: "🔵",
+      };
+    if (c.includes("sl") || c.includes("sleeper"))
+      return {
+        color: "#10b981",
+        bg: "rgba(16,185,129,0.1)",
+        border: "rgba(16,185,129,0.25)",
+        icon: "🌙",
+      };
+    if (c.includes("cc") || c.includes("chair"))
+      return {
+        color: "#f97316",
+        bg: "rgba(249,115,22,0.1)",
+        border: "rgba(249,115,22,0.25)",
+        icon: "💺",
+      };
+    return {
+      color: "#9a9186",
+      bg: "rgba(154,145,134,0.1)",
+      border: "rgba(154,145,134,0.25)",
+      icon: "🎫",
+    };
   };
 
   /* ── Error page ── */
@@ -1806,16 +1845,52 @@ const BookTicketPage = () => {
     return (
       <>
         <style>{BASE_STYLES}</style>
-        <div style={{ minHeight: "100vh", background: "#f0ece4", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <div style={{ background: "#fff", border: "1.5px solid #e8e2da", borderRadius: 16, padding: "48px 56px", textAlign: "center" }}>
+        <div
+          style={{
+            minHeight: "100vh",
+            background: "#f0ece4",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              border: "1.5px solid #e8e2da",
+              borderRadius: 16,
+              padding: "48px 56px",
+              textAlign: "center",
+            }}
+          >
             <div style={{ fontSize: 48, marginBottom: 16 }}>🚂</div>
-            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 32, letterSpacing: "0.04em", color: "#1a2332", margin: "0 0 10px" }}>
+            <h2
+              style={{
+                fontFamily: "'Bebas Neue',sans-serif",
+                fontSize: 32,
+                letterSpacing: "0.04em",
+                color: "#1a2332",
+                margin: "0 0 10px",
+              }}
+            >
               No Ticket Data Found
             </h2>
-            <p style={{ color: "#9a9186", marginBottom: 24, fontSize: 14 }}>Please go back and select a train first.</p>
+            <p style={{ color: "#9a9186", marginBottom: 24, fontSize: 14 }}>
+              Please go back and select a train first.
+            </p>
             <button
               onClick={() => navigate(-1)}
-              style={{ background: "#1a2332", border: "none", borderRadius: 10, padding: "12px 28px", color: "#fff", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }}
+              style={{
+                background: "#1a2332",
+                border: "none",
+                borderRadius: 10,
+                padding: "12px 28px",
+                color: "#fff",
+                fontWeight: 700,
+                fontSize: 14,
+                cursor: "pointer",
+                fontFamily: "'DM Sans',sans-serif",
+              }}
             >
               ← Go Back
             </button>
@@ -1828,18 +1903,22 @@ const BookTicketPage = () => {
   const catStyle = getCatStyle(ticket.category);
 
   /* ── Aadhar mask ── */
-  const maskedAadhar = formData.aadhar.length === 12
-    ? `XXXX XXXX ${formData.aadhar.slice(8)}`
-    : "";
+  const maskedAadhar =
+    formData.aadhar.length === 12
+      ? `XXXX XXXX ${formData.aadhar.slice(8)}`
+      : "";
 
   /* ── Validation ── */
   const validate = () => {
     const e = {};
     if (!formData.name.trim()) e.name = "Full name is required";
-    if (!/^[6-9]\d{9}$/.test(formData.phone)) e.phone = "Enter valid 10-digit mobile number";
-    if (!formData.age || formData.age < 1 || formData.age > 120) e.age = "Enter a valid age (1–120)";
+    if (!/^[6-9]\d{9}$/.test(formData.phone))
+      e.phone = "Enter valid 10-digit mobile number";
+    if (!formData.age || formData.age < 1 || formData.age > 120)
+      e.age = "Enter a valid age (1–120)";
     if (!formData.gender) e.gender = "Please select gender";
-    if (!/^\d{12}$/.test(formData.aadhar)) e.aadhar = "Enter valid 12-digit Aadhar number";
+    if (!/^\d{12}$/.test(formData.aadhar))
+      e.aadhar = "Enter valid 12-digit Aadhar number";
     return e;
   };
 
@@ -1849,40 +1928,129 @@ const BookTicketPage = () => {
   };
 
   /* ── Fake Payment ── */
+
   const handlePay = async () => {
     const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      return;
+    }
 
     setLoading(true);
-
-    // Simulate payment processing delay (2 seconds)
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     try {
-      // Save ticket to backend after fake payment success
-      const token = localStorage.getItem("token");
-      const verify = await axios.post("http://localhost:5000/api/verify-payment", {
-        order_id: "fake_order_" + Date.now(),
-        payment_id: "fake_pay_" + Date.now(),
-        signature: "fake_signature",
-        train,
-        ticket,
-        passenger: formData,
-      }, {
-        withCredentials: true,
-      });
+      const verify = await axios.post(
+        "http://localhost:5000/api/tickets/verify-payment",
+        {
+          // ✅ FLAT FORMAT
+          razorpay_order_id: "fake_order_" + Date.now(),
+          razorpay_payment_id: "fake_pay_" + Date.now(),
+
+          train_no: train.train_number,
+          train_name: train.train_name,
+
+          from_station: ticket.from,
+          to_station: ticket.to,
+          distance_km: ticket.distance_km,
+          price: ticket.price,
+          category: ticket.category,
+
+          start_time: train.start_time || train.departure_time,
+          end_time: train.end_time || train.arrival_time,
+
+          passenger_name: formData.name,
+          passenger_phone: formData.phone,
+          passenger_age: formData.age,
+          passenger_gender: formData.gender,
+        },
+        { withCredentials: true },
+      );
 
       if (verify.data.success) {
-        navigate("/ticket-confirm", { state: { ticket: verify.data.ticket } });
+        // ✅ TicketConfirm.jsx ke hisab se format
+        navigate("/ticket-confirm", {
+          state: {
+            ticket: {
+              pnr: verify.data.ticket.PNR,
+              status: verify.data.ticket.status,
+              price: verify.data.ticket.price,
+              payment_id: verify.data.ticket.payment_id,
+              order_id: verify.data.ticket.order_id,
+              category: verify.data.ticket.category,
+
+              train: {
+                number: verify.data.ticket.train_no,
+                name: verify.data.ticket.train_name,
+                from: verify.data.ticket.from_station,
+                to: verify.data.ticket.to_station,
+                start_time: verify.data.ticket.start_time,
+                end_time: verify.data.ticket.end_time,
+                distance: verify.data.ticket.distance_km,
+              },
+
+              passenger: {
+                name: verify.data.ticket.passenger_name,
+                phone: verify.data.ticket.passenger_phone,
+                age: verify.data.ticket.passenger_age,
+                gender: verify.data.ticket.passenger_gender,
+              },
+            },
+          },
+        });
       } else {
         setLoading(false);
         alert("⚠️ Ticket could not be saved. Contact support.");
       }
-    } catch {
+    } catch (err) {
+      console.log("ERROR:", err.message);
       setLoading(false);
       alert("❌ Something went wrong. Please try again.");
     }
   };
+
+  //   const errs = validate();
+  //   if (Object.keys(errs).length) {
+  //     setErrors(errs);
+  //     return;
+  //   }
+
+  //   setLoading(true);
+
+  //   // Simulate payment processing delay (2 seconds)
+  //   await new Promise((resolve) => setTimeout(resolve, 2000));
+  //   console.log("URL:", "http://localhost:5000/api/tickets/verify-payment");
+  //   console.log("DATA:", "dataJoSendHoRahaHai");
+
+  //   try {
+  //     // Save ticket to backend after fake payment success
+  //     const token = localStorage.getItem("token");
+  //     const verify = await axios.post(
+  //       "http://localhost:5000/api/tickets/verify-payment",
+  //       {
+  //         order_id: "fake_order_" + Date.now(),
+  //         payment_id: "fake_pay_" + Date.now(),
+  //         signature: "fake_signature",
+  //         train,
+  //         ticket,
+  //         passenger: formData,
+  //       },
+  //       {
+  //         withCredentials: true,
+  //       },
+  //     );
+
+  //     if (verify.data.success) {
+  //       navigate("/ticket-confirm", { state: { ticket: verify.data.ticket } });
+  //     } else {
+  //       setLoading(false);
+  //       alert("⚠️ Ticket could not be saved. Contact support.");
+  //     }
+  //   } catch {
+  //     setLoading(false);
+  //     alert("❌ Something went wrong. Please try again.");
+  //   }
+  // };
 
   return (
     <>
@@ -1893,22 +2061,24 @@ const BookTicketPage = () => {
         <div className="btp-overlay">
           <div className="btp-overlay-spinner" />
           <div className="btp-overlay-title">Processing Payment</div>
-          <div className="btp-overlay-sub">Please do not close this window…</div>
+          <div className="btp-overlay-sub">
+            Please do not close this window…
+          </div>
         </div>
       )}
 
       <div className="btp-root">
-
         {/* ══ DARK HEADER ══ */}
         <div className="btp-header">
           <div className="btp-header-inner">
-
             <button className="btp-nav-back" onClick={() => navigate(-1)}>
               ← Back to Ticket Selection
             </button>
 
             <div className="btp-train-identity">
-              <div className="btp-train-num-tag">Train No. {train.train_number}</div>
+              <div className="btp-train-num-tag">
+                Train No. {train.train_number}
+              </div>
               <div className="btp-train-title">{train.train_name}</div>
             </div>
 
@@ -1917,7 +2087,9 @@ const BookTicketPage = () => {
               <div className="btp-route-cell">
                 <div className="btp-route-label">From</div>
                 <div className="btp-route-value">{train.source_station}</div>
-                <div className="btp-route-sub">Departure · {train.start_time}</div>
+                <div className="btp-route-sub">
+                  Departure · {train.start_time}
+                </div>
               </div>
 
               <div className="btp-route-arrow">
@@ -1926,13 +2098,22 @@ const BookTicketPage = () => {
 
               <div className="btp-route-cell">
                 <div className="btp-route-label">To</div>
-                <div className="btp-route-value">{train.destination_station}</div>
+                <div className="btp-route-value">
+                  {train.destination_station}
+                </div>
                 <div className="btp-route-sub">Arrival · {train.end_time}</div>
               </div>
 
               <div className="btp-route-cell btp-route-cell--sep">
                 <div className="btp-route-label">Class</div>
-                <div className="btp-cat-badge" style={{ color: catStyle.color, background: catStyle.bg, borderColor: catStyle.border }}>
+                <div
+                  className="btp-cat-badge"
+                  style={{
+                    color: catStyle.color,
+                    background: catStyle.bg,
+                    borderColor: catStyle.border,
+                  }}
+                >
                   {catStyle.icon} {ticket.category}
                 </div>
               </div>
@@ -1949,40 +2130,62 @@ const BookTicketPage = () => {
         {/* ══ BODY ══ */}
         <div className="btp-body">
           <div className="btp-grid">
-
             {/* ── LEFT: Journey Summary ── */}
             <div>
               <div className="btp-section-label">Journey Summary</div>
 
               {/* Ticket card — styled exactly like TicketPage */}
               <div className="btp-ticket-card">
-                <div className="btp-ticket-bar" style={{ background: catStyle.color }} />
+                <div
+                  className="btp-ticket-bar"
+                  style={{ background: catStyle.color }}
+                />
                 <div className="btp-perf">
-                  {[...Array(6)].map((_, i) => <div className="btp-perf-dot" key={i} />)}
+                  {[...Array(6)].map((_, i) => (
+                    <div className="btp-perf-dot" key={i} />
+                  ))}
                 </div>
                 <div className="btp-ticket-body">
                   <div className="btp-tc-cell">
                     <div className="btp-tc-label">Class</div>
-                    <div className="btp-cat-badge" style={{ color: catStyle.color, background: catStyle.bg, borderColor: catStyle.border }}>
+                    <div
+                      className="btp-cat-badge"
+                      style={{
+                        color: catStyle.color,
+                        background: catStyle.bg,
+                        borderColor: catStyle.border,
+                      }}
+                    >
                       {catStyle.icon} {ticket.category}
                     </div>
                   </div>
                   <div className="btp-tc-divider" />
                   <div className="btp-tc-cell">
                     <div className="btp-tc-label">Route</div>
-                    <div className="btp-tc-value">{train.source_station} → {train.destination_station}</div>
-                    <div className="btp-tc-sub">{ticket.distance_km} KM total</div>
+                    <div className="btp-tc-value">
+                      {train.source_station} → {train.destination_station}
+                    </div>
+                    <div className="btp-tc-sub">
+                      {ticket.distance_km} KM total
+                    </div>
                   </div>
                   <div className="btp-tc-divider" />
                   <div className="btp-tc-cell">
                     <div className="btp-tc-label">Timings</div>
-                    <div className="btp-tc-value">{train.start_time} → {train.end_time}</div>
+                    <div className="btp-tc-value">
+                      {train.start_time} → {train.end_time}
+                    </div>
                     <div className="btp-tc-sub">Dep. → Arr.</div>
                   </div>
                   <div className="btp-tc-divider" />
                   <div className="btp-tc-cell">
                     <div className="btp-tc-label">Fare</div>
-                    <div className="btp-price" style={{ color: catStyle.color }}>₹{ticket.price}</div>
+                    <div
+                      className="btp-price"
+                      style={{ color: catStyle.color }}
+                    >
+                      ₹{ticket.price}
+                    </div>
                     <div className="btp-price-sub">Per passenger</div>
                   </div>
                 </div>
@@ -1990,12 +2193,25 @@ const BookTicketPage = () => {
 
               {/* Info note */}
               <div className="btp-info-note">
-                <div className="btp-info-note-title"> Important Information</div>
+                <div className="btp-info-note-title">
+                  {" "}
+                  Important Information
+                </div>
                 <ul className="btp-info-list">
-                  <li>Aadhar number is required for identity verification during travel</li>
-                  <li>E-Ticket will be sent to your registered mobile number via SMS</li>
-                  <li>Carry a valid government-issued photo ID while travelling</li>
-                  <li>Cancellation policy applies as per railway regulations</li>
+                  <li>
+                    Aadhar number is required for identity verification during
+                    travel
+                  </li>
+                  <li>
+                    E-Ticket will be sent to your registered mobile number via
+                    SMS
+                  </li>
+                  <li>
+                    Carry a valid government-issued photo ID while travelling
+                  </li>
+                  <li>
+                    Cancellation policy applies as per railway regulations
+                  </li>
                 </ul>
               </div>
 
@@ -2013,22 +2229,30 @@ const BookTicketPage = () => {
                 {/* <div className="btp-form-head-icon">👤</div> */}
                 <div>
                   <div className="btp-form-title">Passenger Details</div>
-                  <div className="btp-form-sub">Fill in your information to continue</div>
+                  <div className="btp-form-sub">
+                    Fill in your information to continue
+                  </div>
                 </div>
               </div>
 
               <div className="btp-form-body">
-
                 {/* Name */}
                 <div className="btp-field">
                   <label className="btp-label">Full Name</label>
                   <div className="btp-input-wrap">
                     <span className="btp-input-icon-el">👤</span>
-                    <input className={`btp-input ${errors.name ? "btp-input--err" : ""}`}
-                      type="text" name="name" value={formData.name}
-                      placeholder="Enter your full name" onChange={handleChange} />
+                    <input
+                      className={`btp-input ${errors.name ? "btp-input--err" : ""}`}
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      placeholder="Enter your full name"
+                      onChange={handleChange}
+                    />
                   </div>
-                  {errors.name && <div className="btp-err-txt">⚠ {errors.name}</div>}
+                  {errors.name && (
+                    <div className="btp-err-txt">⚠ {errors.name}</div>
+                  )}
                 </div>
 
                 {/* Phone */}
@@ -2036,32 +2260,61 @@ const BookTicketPage = () => {
                   <label className="btp-label">Mobile Number</label>
                   <div className="btp-input-wrap">
                     <span className="btp-input-icon-el">📱</span>
-                    <input className={`btp-input ${errors.phone ? "btp-input--err" : ""}`}
-                      type="tel" name="phone" value={formData.phone}
-                      placeholder="10-digit mobile number" maxLength={10} onChange={handleChange} />
+                    <input
+                      className={`btp-input ${errors.phone ? "btp-input--err" : ""}`}
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      placeholder="10-digit mobile number"
+                      maxLength={10}
+                      onChange={handleChange}
+                    />
                   </div>
-                  {errors.phone && <div className="btp-err-txt">⚠ {errors.phone}</div>}
+                  {errors.phone && (
+                    <div className="btp-err-txt">⚠ {errors.phone}</div>
+                  )}
                 </div>
 
                 {/* Age + Gender */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 12,
+                  }}
+                >
                   <div className="btp-field">
                     <label className="btp-label">Age</label>
-                    <input className={`btp-input ${errors.age ? "btp-input--err" : ""}`}
-                      type="number" name="age" min="1" max="120"
-                      value={formData.age} placeholder="Age" onChange={handleChange} />
-                    {errors.age && <div className="btp-err-txt">⚠ {errors.age}</div>}
+                    <input
+                      className={`btp-input ${errors.age ? "btp-input--err" : ""}`}
+                      type="number"
+                      name="age"
+                      min="1"
+                      max="120"
+                      value={formData.age}
+                      placeholder="Age"
+                      onChange={handleChange}
+                    />
+                    {errors.age && (
+                      <div className="btp-err-txt">⚠ {errors.age}</div>
+                    )}
                   </div>
                   <div className="btp-field">
                     <label className="btp-label">Gender</label>
-                    <select className={`btp-select ${errors.gender ? "btp-input--err" : ""}`}
-                      name="gender" value={formData.gender} onChange={handleChange}>
+                    <select
+                      className={`btp-select ${errors.gender ? "btp-input--err" : ""}`}
+                      name="gender"
+                      value={formData.gender}
+                      onChange={handleChange}
+                    >
                       <option value="">Select</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                       <option value="other">Other</option>
                     </select>
-                    {errors.gender && <div className="btp-err-txt">⚠ {errors.gender}</div>}
+                    {errors.gender && (
+                      <div className="btp-err-txt">⚠ {errors.gender}</div>
+                    )}
                   </div>
                 </div>
 
@@ -2070,13 +2323,28 @@ const BookTicketPage = () => {
                   <label className="btp-label">Aadhar Card Number</label>
                   <div className="btp-input-wrap">
                     <span className="btp-input-icon-el">🪪</span>
-                    <input className={`btp-input ${errors.aadhar ? "btp-input--err" : ""}`}
-                      type="text" name="aadhar" value={formData.aadhar}
-                      placeholder="12-digit Aadhar number" maxLength={12} onChange={handleChange} />
+                    <input
+                      className={`btp-input ${errors.aadhar ? "btp-input--err" : ""}`}
+                      type="text"
+                      name="aadhar"
+                      value={formData.aadhar}
+                      placeholder="12-digit Aadhar number"
+                      maxLength={12}
+                      onChange={handleChange}
+                    />
                   </div>
-                  {errors.aadhar && <div className="btp-err-txt">⚠ {errors.aadhar}</div>}
+                  {errors.aadhar && (
+                    <div className="btp-err-txt">⚠ {errors.aadhar}</div>
+                  )}
                   {maskedAadhar && !errors.aadhar && (
-                    <div style={{ fontSize: 11, color: "#10b981", marginTop: 5, fontWeight: 600 }}>
+                    <div
+                      style={{
+                        fontSize: 11,
+                        color: "#10b981",
+                        marginTop: 5,
+                        fontWeight: 600,
+                      }}
+                    >
                       ✓ {maskedAadhar}
                     </div>
                   )}
@@ -2085,26 +2353,51 @@ const BookTicketPage = () => {
                 <div className="btp-divider" />
 
                 {/* Summary */}
-                <div className="btp-summary-row"><span>Train</span><span>{train.train_name}</span></div>
-                <div className="btp-summary-row"><span>Route</span><span>{train.source_station} → {train.destination_station}</span></div>
-                <div className="btp-summary-row"><span>Category</span><span>{ticket.category}</span></div>
-                <div className="btp-summary-row"><span>Distance</span><span>{ticket.distance_km} KM</span></div>
+                <div className="btp-summary-row">
+                  <span>Train</span>
+                  <span>{train.train_name}</span>
+                </div>
+                <div className="btp-summary-row">
+                  <span>Route</span>
+                  <span>
+                    {train.source_station} → {train.destination_station}
+                  </span>
+                </div>
+                <div className="btp-summary-row">
+                  <span>Category</span>
+                  <span>{ticket.category}</span>
+                </div>
+                <div className="btp-summary-row">
+                  <span>Distance</span>
+                  <span>{ticket.distance_km} KM</span>
+                </div>
 
                 {/* Total */}
                 <div className="btp-total-row">
                   <div>
                     <div className="btp-total-label">Total Amount</div>
-                    <div className="btp-total-sub">Inclusive of all charges</div>
+                    <div className="btp-total-sub">
+                      Inclusive of all charges
+                    </div>
                   </div>
                   <div className="btp-total-price">₹{ticket.price}</div>
                 </div>
 
                 {/* Pay Button */}
-                <button className="btp-pay-btn" onClick={handlePay} disabled={loading}>
+                <button
+                  className="btp-pay-btn"
+                  onClick={handlePay}
+                  disabled={loading}
+                >
                   {loading ? (
-                    <><div className="btp-btn-spinner" /> Processing…</>
+                    <>
+                      <div className="btp-btn-spinner" /> Processing…
+                    </>
                   ) : (
-                    <><div className="btp-pay-btn-dot">→</div> Pay ₹{ticket.price} Securely</>
+                    <>
+                      <div className="btp-pay-btn-dot">→</div> Pay ₹
+                      {ticket.price} Securely
+                    </>
                   )}
                 </button>
 
@@ -2113,7 +2406,6 @@ const BookTicketPage = () => {
                 </div> */}
               </div>
             </div>
-
           </div>
         </div>
       </div>

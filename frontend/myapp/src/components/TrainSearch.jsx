@@ -156,6 +156,7 @@ const TrainSearch = () => {
   const fetchStations = async (query, type) => {
     if (!query) {
       type === "from" ? setFromSugg([]) : setToSugg([]);
+
       return;
     }
     try {

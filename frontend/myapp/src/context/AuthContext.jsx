@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/me", {
+      .get("http://localhost:5000/api/auth/me", {
         withCredentials: true,
       })
       .then((res) => {

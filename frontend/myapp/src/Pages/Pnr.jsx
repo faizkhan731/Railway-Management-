@@ -17,10 +17,13 @@ const Pnr = () => {
       setLoading(true);
       setError("");
       setTicket(null);
-      const res = await axios.get("http://localhost:5000/api/check-pnr", {
-        withCredentials: true,
-        params: { pnrNumber: pnr.trim() },
-      });
+      const res = await axios.get(
+        "http://localhost:5000/api/tickets/check-pnr",
+        {
+          withCredentials: true,
+          params: { pnr: pnr.trim() },
+        },
+      );
       setTicket(res.data.ticket);
     } catch (err) {
       setError(err.response?.data?.message || "Invalid PNR. Please try again.");
