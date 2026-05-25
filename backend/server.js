@@ -644,11 +644,19 @@ connectDB();
 // CORS
 app.use(
   cors({
-    origin:[ "http://localhost:5174",
-     "http://localhost:5174",
-      "https://railway-management-three.vercel.app",
-
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "https://railway-management-three.vercel.app"
     ],
+
+    methods: [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+    ],
+
     credentials: true,
   })
 );
@@ -664,6 +672,7 @@ app.use(
   session({
     secret: "faizkhan",
 
+
     resave: false,
 
     saveUninitialized: false,
@@ -671,7 +680,8 @@ app.use(
     cookie: {
       httpOnly: true,
 
-      secure: false,
+      secure: true,
+      sameSite: "none",
 
       maxAge: 1000 * 60 * 60 * 2,
     },
