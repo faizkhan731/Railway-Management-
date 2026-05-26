@@ -93,12 +93,18 @@ const loginUser = async (req, res) => {
     );
 
     // COOKIE
+    // res.cookie("authToken", token, {
+    //   httpOnly: true,
+    //   secure: false,
+    //   sameSite: "lax",
+    //   maxAge: 1000 * 60 * 60 * 2,
+    // });
     res.cookie("authToken", token, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "lax",
-      maxAge: 1000 * 60 * 60 * 2,
-    });
+  httpOnly: true,
+  secure: true,       // ← HTTPS ke liye
+  sameSite: "none",   // ← cross-origin ke liye
+  maxAge: 1000 * 60 * 60 * 2,
+});
 
     res.json({
       success: true,
