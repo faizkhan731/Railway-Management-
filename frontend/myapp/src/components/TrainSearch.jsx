@@ -568,7 +568,7 @@ const TrainSearch = () => {
               {/* FROM */}
               <div className="ts-field" style={{ position: "relative" }}>
                 <div className="ts-field-label">
-                  <span>📍</span> From
+                  <span></span> From
                 </div>
                 <input
                   type="text"
@@ -614,7 +614,7 @@ const TrainSearch = () => {
               {/* TO */}
               <div className="ts-field" style={{ position: "relative" }}>
                 <div className="ts-field-label">
-                  <span>🏁</span> To
+                  <span></span> To
                 </div>
                 <input
                   type="text"
@@ -650,7 +650,7 @@ const TrainSearch = () => {
             <div className="ts-bottom">
               <div className="ts-date-wrap">
                 <div className="ts-date-label">
-                  <span>📅</span> Journey Date
+                  <span></span> Journey Date
                 </div>
                 <input
                   type="date"
