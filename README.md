@@ -146,6 +146,42 @@ Railway/
 
 ---
 
+##  Sample Train Routes
+
+this route available on database
+
+| # | Train No | Train Name | From | To | Days | Departure | Arrival |
+|---|---|---|---|---|---|---|---|
+| 1 | 15482 | Arrah Passenger | Arrah Terminal | Loni Junction | Sat, Wed, Sun | 13:00 | 18:30 |
+| 2 | 19121 | Jehanabad Local | Jehanabad Junction | Mirzapur City | Wed, Thu, Sun, Tue | 13:00 | 06:30 |
+| 3 | 37060 | Shahjahanpur Passenger | Shahjahanpur Junction | Meerut Junction | Wed, Thu, Sat, Mon | 16:00 | 09:30 |
+| 4 | 38325 | Nandyal Express | Nandyal Junction | Nizamabad Terminal | All Days | 17:00 | 12:30 |
+| 5 | 82824 | Kolkata Express | Howrah Junction | Pudukkottai Terminal | Mon, Tue, Wed, Sun, Thu | 18:00 | 06:30 |
+| 6 | 16813 | Ratlam Passenger | Ratlam City | Farrukhabad Junction | Thu, Tue, Wed, Fri | 01:00 | 07:30 |
+
+### Ticket Categories & Pricing
+
+| Category | Price Per KM |
+|---|---|
+| First Class (1A) | Highest |
+| Second AC (2A) | High |
+| Third AC (3A) | Medium |
+| Sleeper (SL) | Low |
+| Chair Car (CC) | Lowest |
+
+>  **Tip:** Price = Distance (KM) × Price Per KM of selected category
+
+###  How to Search
+
+1. Home page pe **From** station type karo (e.g. `Arrah Terminal`)
+2. **To** station type karo (e.g. `Loni Junction`)
+3. Date select karo
+4. **Search Trains** click karo
+5. Train mile to **View Ticket** click karo
+6. Category select karo → **Book Now**
+
+---
+
 ##  Local Setup
 
 ### Prerequisites
